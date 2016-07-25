@@ -8,6 +8,7 @@
 #include "openssl/rand.h"
 #include "openssl/ssl.h"
 #include "openssl/err.h"
+
 #if (defined(WIN32) || defined(_WIN32) || defined(_WIN64))
 	#include "windows.h"
 	#include "io.h"

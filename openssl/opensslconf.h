@@ -2,9 +2,6 @@
 /* WARNING: Generated automatically from opensslconf.h.in by Configure. */
 
 /* OpenSSL was configured with the following options: */
-#ifndef OPENSSL_SYSNAME_WIN32
-# define OPENSSL_SYSNAME_WIN32
-#endif
 #ifndef OPENSSL_DOING_MAKEDEPEND
 
 
