@@ -130,6 +130,11 @@ int CSocket::listen_socket(int socketid, int port)
 		addr.sin_addr.s_addr = htonl(INADDR_ANY);
 	else
 		addr.sin_addr.s_addr = inet_addr(m_pSocketInfo[socketid].bind_ip);
+	int optval = 1;
+	if(setsockopt(m_pSocket[socketid], SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(int)) < 0)	{
+		logprintf("socket_listen(): Could not set SO_REUSEADDR option on listen socket");
+		return 0;
+	}
 	if(bind(m_pSocket[socketid], (struct sockaddr *)&addr, sizeof(addr)) == SOCKET_ERROR) {
 		logprintf("socket_listen(): Socket has failed to bind. (IP %s, Port %d)", m_pSocketInfo[socketid].bind_ip, port);
 		logprintf("					The port might be already in use.");
